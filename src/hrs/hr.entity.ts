@@ -5,7 +5,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { CURRENT_TIMESTAMP } from 'utils/constants';
+import { CURRENT_TIMESTAMP } from '../../utils/constants';
 import { UserRole } from 'utils/enums';
 @Entity('hrs')
 export class Hr {
