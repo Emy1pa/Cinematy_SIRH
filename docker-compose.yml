@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000'
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USERNAME=root
+      - DB_DATABASE=hrmanagement
+      - JWT_SECRET=thisIsAPrivateKeyazerty12349504kjskjr
+      - JWT_EXPIRES_IN=10d
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USER=souaouti.iman@gmail.com
+      - SMTP_PASS=xaahrgxjsldmqxom
+      - KEYLOACK_URL=http://localhost:8080/realms/Myrealme/protocol/openid-connect/token
+      - CLIENT_ID=Cinematy
+      - CLIENT_SECRET=96NO015xSzak8Mz7S5uyuSpIYtyF7qbP
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_DATABASE: hrmanagement
+    ports:
+      - '3306:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+### docker-compose up --build
+###/var/lib/mysql is the default directory in a MySQL container where the database stores its data files. This directory contains all the databases, tables, indexes, and other related data structures that MySQL uses to manage your database.
